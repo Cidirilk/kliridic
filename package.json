@@ -1,0 +1,21 @@
+{
+  "name": "kliridis-portfolio",
+  "version": "1.0.0",
+  "description": "A personal portfolio showcasing the work and skills of Charalampos Kliridis.",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server",
+    "build": "echo 'Build process can be defined here.'"
+  },
+  "author": "Charalampos Kliridis",
+  "license": "MIT",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "portfolio",
+    "web",
+    "personal"
+  ]
+}

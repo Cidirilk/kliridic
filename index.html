@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>kliridiC Portfolio</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <script src="./assets/js/script.js" defer></script>
+  </head>
+  <body onload="initPage()">
+    <div id="loader" aria-label="Loading content" tabindex="0">
+      <div class="loader-content">
+        <div class="loader-text-block">
+          <div class="loader-text-stage">
+            <span class="loader-text loader-text-profile">CIDIRILK</span>
+            <span class="loader-text loader-text-brand">KLIRIDIC</span>
+          </div>
+          <span class="flash-text">click</span>
+        </div>
+      </div>
+    </div>
+
+    <header class="topnav" id="mainNav">
+      <a href="index.html" class="brand">kliridiC</a>
+      <nav class="nav-menu">
+        <ul>
+          <li><a href="#Home" class="active">Home</a></li>
+          <li><a href="#About">About</a></li>
+          <li><a href="#Work">Work</a></li>
+          <li><a href="#Education">Education</a></li>
+          <li><a href="#Skills">Skills</a></li>
+          <li><a href="#Interests">Interests</a></li>
+          <li><a href="#Portfolio">Portfolio</a></li>
+          <li><a href="#Contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="menu-toggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+    </header>
+
+    <div class="wrapper animate-bottom" id="mainContent">
+      <main class="main-content">
+        <!-- Home Section -->
+        <section id="Home" class="section" data-animate="true">
+          <div class="section-header">
+            <span class="section-subtitle">Home</span>
+            <h1 class="section-title">My Profile</h1>
+          </div>
+
+          <div class="profile-container card-surface">
+            <div class="profile-image">
+              <img
+                src="./assets/img/profilepic.jpg"
+                alt="Profile picture"
+                class="profile-pic"
+              />
+            </div>
+            <div class="profile-content">
+              <div class="intro">
+                <span class="greeting">HELLO EVERYBODY, I AM</span>
+                <h2 class="name">
+                  Kliridis <br />
+                  Charalampos
+                </h2>
+                <h3 class="title">QA Engineer</h3>
+              </div>
+              <p class="bio">
+                I am a firm believer in continuous improvement and regularly
+                engage in professional development to stay abreast of the latest
+                QA trends and practices.
+              </p>
+              <ul class="contact-info">
+                <li><i class="fas fa-calendar"></i>22th Jun, 1994</li>
+                <li>
+                  <i class="fas fa-phone"></i
+                  ><a href="tel:+35799034015">+357 99034015</a>
+                </li>
+                <li>
+                  <i class="fas fa-envelope"></i
+                  ><a href="mailto:charalampos.kliridis@gmail.com"
+                    >charalampos.kliridis@gmail.com</a
+                  >
+                </li>
+                <li><i class="fas fa-map-marker-alt"></i>Nicosia, Cyprus</li>
+              </ul>
+              <div class="social-links">
+                <a href="#" aria-label="LinkedIn"
+                  ><i class="fab fa-linkedin"></i
+                ></a>
+                <a href="#" aria-label="Facebook"
+                  ><i class="fab fa-facebook"></i
+                ></a>
+                <a href="#" aria-label="Twitter"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+                <a href="#" aria-label="Instagram"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Other sections follow similar pattern -->
+
+        <!-- About Section -->
+        <section id="About" class="section" data-animate="true">
+          <div class="section-header">
+            <span class="section-subtitle">About</span>
+            <h2 class="section-title">My Self</h2>
+          </div>
+          <div class="card-surface about-card">
+            <div class="about-content">
+              <h3>Well</h3>
+              <p>
+                As a QA Engineer with over five years of experience in the
+                software development industry, I have developed a keen eye for
+                detail and a relentless drive to ensure that every product I
+                touch achieves the highest quality standards. My background in
+                computer science has provided me with a strong technical
+                foundation, enabling me to understand the intricacies of
+                software design and development.
+              </p>
+              <p>
+                My expertise lies in manual testing. I am good in multiple
+                programming languages, which allows me to adapt quickly to new
+                technologies and methodologies. My goal is to identify and
+                resolve potential issues before they affect the end-user,
+                ensuring a seamless and positive user experience.
+              </p>
+              <p>
+                In my current role, I have successfully reduced the bug rate by
+                30% through meticulous test planning and execution. I am a firm
+                believer in continuous improvement and regularly engage in
+                professional development to stay abreast of the latest QA trends
+                and practices. I take pride in mentoring junior QA engineers and
+                fostering a collaborative team environment where knowledge
+                sharing leads to collective success.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Work Section -->
+        <section id="Work" class="section" data-animate="true">
+          <div class="section-header">
+            <span class="section-subtitle">Work</span>
+            <h2 class="section-title">Experience</h2>
+          </div>
+          <div class="card-surface timeline-card">
+            <div class="timeline-header">
+              <span class="timeline-badge"
+                ><i class="fas fa-briefcase"></i
+              ></span>
+              <div>
+                <h3>Professional Journey</h3>
+                <p>Highlights from my recent roles and contributions.</p>
+              </div>
+            </div>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-icon">
+                  <i class="fas fa-star"></i>
+                </div>
+                <div class="timeline-content">
+                  <h3>Playtech BGT Sports</h3>
+                  <h4>Senior QA / Manual Testing</h4>
+                  <p>
+                    Worked on test planning, exploratory testing, and cross-team
+                    coordination.
+                  </p>
+                  <span class="timeline-date">2020 - present</span>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-icon">
+                  <i class="fas fa-building"></i>
+                </div>
+                <div class="timeline-content">
+                  <h3>Previous Roles</h3>
+                  <h4>QA Engineer</h4>
+                  <p>
+                    Worked on regression testing, bug triage and test case
+                    design.
+                  </p>
+                  <span class="timeline-date">2016 - 2020</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="Education" class="section" data-animate="true">
+          <div class="section-header">
+            <span class="section-subtitle">Education</span>
+            <h2 class="section-title">Never Stops</h2>
+          </div>
+          <div class="education-container">
+            <div class="education-card card-surface">
+              <h3>
+                <span class="edu-icon"><i class="fas fa-certificate"></i></span>
+                Certifications
+              </h3>
+              <div class="education-list">
+                <article class="education-item">
+                  <h4>Department of Computer Science</h4>
+                  <p>National Tsing Hua University, Taiwan</p>
+                  <span class="education-year">2015 - 2019</span>
+                </article>
+                <article class="education-item">
+                  <h4>Institute of Computer Science and Engineering</h4>
+                  <p>National Chiao Tung University, Taiwan</p>
+                  <span class="education-year">2020 - present</span>
+                </article>
+              </div>
+            </div>
+            <div class="education-card card-surface">
+              <h3>
+                <span class="edu-icon"
+                  ><i class="fas fa-user-graduate"></i
+                ></span>
+                University
+              </h3>
+              <div class="education-list">
+                <article class="education-item">
+                  <h4>Department of Computer Science</h4>
+                  <p>National Tsing Hua University, Taiwan</p>
+                  <span class="education-year">2015 - 2019</span>
+                </article>
+                <article class="education-item">
+                  <h4>Institute of Computer Science and Engineering</h4>
+                  <p>National Chiao Tung University, Taiwan</p>
+                  <span class="education-year">2020 - present</span>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="Skills" class="section" data-animate="true">
+          <div class="section-header">
+            <span class="section-subtitle">Skills</span>
+            <h2 class="section-title">On</h2>
+          </div>
+          <div class="skills-container">
+            <div class="skill-board card-surface">
+              <div class="skill-header">
+                <span class="skill-icon"
+                  ><i class="fas fa-laptop-code"></i
+                ></span>
+                <div>
+                  <h3 class="skill-title">Programming Skills</h3>
+                  <p class="skill-subtitle">
+                    A snapshot of the languages and tools I rely on daily.
+                  </p>
+                </div>
+              </div>
+              <div class="skill-list">
+                <div class="skill-item" style="--level: 0.5">
+                  <div class="skill-meta">
+                    <span class="skill-name">HTML5</span>
+                    <span class="skill-percent">50%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-level"></div>
+                  </div>
+                </div>
+                <div class="skill-item" style="--level: 0.45">
+                  <div class="skill-meta">
+                    <span class="skill-name">CSS3</span>
+                    <span class="skill-percent">45%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-level"></div>
+                  </div>
+                </div>
+                <div class="skill-item" style="--level: 0.2">
+                  <div class="skill-meta">
+                    <span class="skill-name">JavaScript</span>
+                    <span class="skill-percent">20%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-level"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Interests Section -->
+        <section id="Interests" class="section" data-animate="true">
+          <div class="section-header">
+            <span class="section-subtitle">Interests</span>
+            <h2 class="section-title">Hobbies</h2>
+          </div>
+          <div class="interests-container">
+            <div class="interests-card card-surface">
+              <p class="interests-intro">
+                Staying balanced with creative and active hobbies keeps me
+                energised and curious outside the office.
+              </p>
+              <ul class="interests-list">
+                <li><i class="fas fa-rainbow"></i><span>Yoga</span></li>
+                <li><i class="fas fa-utensils"></i><span>Cooking</span></li>
+                <li><i class="fas fa-music"></i><span>Music</span></li>
+                <li><i class="fas fa-book"></i><span>Self-Learning</span></li>
+                <li><i class="fas fa-basketball"></i><span>Sports</span></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="Contact" class="section" data-animate="true">
+          <div class="section-header">
+            <span class="section-subtitle">Contact</span>
+            <h2 class="section-title">Let's Connect</h2>
+          </div>
+          <div class="contact-section">
+            <div class="contact-details card-surface">
+              <h3>Get in Touch</h3>
+              <p>
+                I am always open to discussing new projects, opportunities or
+                partnerships. Reach out using the details below or drop by on
+                maps.
+              </p>
+              <ul class="contact-info contact-info--stacked">
+                <li><i class="fas fa-calendar"></i>22th Jun, 1994</li>
+                <li>
+                  <i class="fas fa-phone"></i
+                  ><a href="tel:+35799034015">+357 99034015</a>
+                </li>
+                <li>
+                  <i class="fas fa-envelope"></i
+                  ><a href="mailto:charalampos.kliridis@gmail.com"
+                    >charalampos.kliridis@gmail.com</a
+                  >
+                </li>
+                <li>
+                  <i class="fas fa-map-marker-alt"></i
+                  ><span>Nicosia, Cyprus</span>
+                </li>
+              </ul>
+              <div class="contact-actions">
+                <a
+                  class="contact-button"
+                  href="mailto:charalampos.kliridis@gmail.com"
+                  >Send Email</a
+                >
+                <div class="social-links">
+                  <a href="#" aria-label="LinkedIn"
+                    ><i class="fab fa-linkedin"></i
+                  ></a>
+                  <a href="#" aria-label="Facebook"
+                    ><i class="fab fa-facebook"></i
+                  ></a>
+                  <a href="#" aria-label="Twitter"
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                  <a href="#" aria-label="Instagram"
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+            <div class="contact-map">
+              <iframe
+                title="Map showing Nicosia, Cyprus"
+                src="https://www.google.com/maps?q=Nicosia,+Cyprus&output=embed"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+              <a
+                class="map-link"
+                href="https://maps.app.goo.gl/r9hAXrNRi8KosBnD6"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Open in Google Maps</a
+              >
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="site-footer">
+      <span
+        >&copy; <span id="currentYear"></span> kliridiC. All rights
+        reserved.</span
+      >
+    </footer>
+  </body>
+</html>
