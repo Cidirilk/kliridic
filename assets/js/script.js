@@ -1,5 +1,46 @@
 let loaderTimeout;
 let loaderDismissed = false;
+const rootElement = document.documentElement;
+const viewportHeightProperty = '--full-viewport-height';
+let viewportRafId = null;
+
+function setViewportHeight() {
+    const viewportHeight = window.visualViewport
+        ? window.visualViewport.height
+        : window.innerHeight;
+    rootElement.style.setProperty(viewportHeightProperty, `${viewportHeight}px`);
+}
+
+function scheduleViewportHeightUpdate() {
+    if (viewportRafId !== null) {
+        cancelAnimationFrame(viewportRafId);
+    }
+
+    viewportRafId = requestAnimationFrame(() => {
+        viewportRafId = null;
+        setViewportHeight();
+    });
+}
+
+function initViewportHeightFix() {
+    setViewportHeight();
+
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', scheduleViewportHeightUpdate);
+        window.visualViewport.addEventListener('scroll', scheduleViewportHeightUpdate);
+    } else {
+        window.addEventListener('resize', scheduleViewportHeightUpdate);
+    }
+
+    window.addEventListener('orientationchange', scheduleViewportHeightUpdate);
+    window.addEventListener('pageshow', (event) => {
+        if (event.persisted) {
+            scheduleViewportHeightUpdate();
+        }
+    });
+}
+
+initViewportHeightFix();
 
 // Page initialization
 function initPage() {
