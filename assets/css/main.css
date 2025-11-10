@@ -10,6 +10,28 @@
     --font-secondary: 'Roboto', sans-serif;
     --transition: all 0.3s ease;
     --full-viewport-height: 100vh;
+    
+    /* Light mode colors (default) */
+    --bg-primary: #ffffff;
+    --bg-secondary: rgba(79, 178, 134, 0.05);
+    --text-primary: #000000;
+    --text-secondary: rgba(0, 0, 0, 0.7);
+    --text-tertiary: rgba(0, 0, 0, 0.65);
+    --border-color: rgba(79, 178, 134, 0.15);
+    --shadow-color: rgba(0, 0, 0, 0.06);
+    --nav-bg: #000000;
+}
+
+[data-theme="dark"] {
+    /* Dark mode colors */
+    --bg-primary: #0f211c;
+    --bg-secondary: rgba(79, 178, 134, 0.1);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-tertiary: rgba(255, 255, 255, 0.7);
+    --border-color: rgba(79, 178, 134, 0.25);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --nav-bg: #000000;
 }
 
 @supports (height: 100dvh) {
@@ -28,10 +50,16 @@
 body {
     font-family: var(--font-primary);
     line-height: 1.6;
-    background-color: var(--color-white);
+    background-color: var(--bg-primary);
     background-image: radial-gradient(circle at top right, rgba(79, 178, 134, 0.12), transparent 45%), radial-gradient(circle at 20% 20%, rgba(0, 0, 0, 0.04), transparent 35%);
     padding-bottom: 3.5rem;
     min-height: var(--full-viewport-height, 100vh);
+    transition: background-color var(--transition), color var(--transition);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] body {
+    background-image: radial-gradient(circle at top right, rgba(79, 178, 134, 0.15), transparent 45%), radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.02), transparent 35%);
 }
 
 h1,
@@ -75,12 +103,16 @@ h6 {
     height: var(--full-viewport-height, 100vh);
     min-height: var(--full-viewport-height, 100vh);
     z-index: 9999;
-    background-color: var(--color-white);
+    background-color: var(--bg-primary);
     background-image: radial-gradient(circle at top right, rgba(79, 178, 134, 0.12), transparent 45%), radial-gradient(circle at 20% 20%, rgba(0, 0, 0, 0.04), transparent 35%);
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition: opacity 0.6s ease, transform 0.6s ease, background-color var(--transition);
+}
+
+[data-theme="dark"] #loader {
+    background-image: radial-gradient(circle at top right, rgba(79, 178, 134, 0.15), transparent 45%), radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.02), transparent 35%);
 }
 
 #loader.hide {
@@ -218,7 +250,7 @@ h6 {
 
 /* Navigation */
 .topnav {
-    background-color: var(--color-black);
+    background-color: var(--nav-bg);
     overflow: visible;
     position: sticky;
     top: 0;
@@ -228,6 +260,7 @@ h6 {
     justify-content: space-between;
     align-items: center;
     padding: 0 1.25rem;
+    transition: background-color var(--transition);
 }
 
 .brand {
@@ -291,6 +324,30 @@ h6 {
     color: var(--profile-theme);
 }
 
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.theme-toggle {
+    background: transparent;
+    border: none;
+    color: var(--color-white);
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.9375rem 0;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle:hover {
+    color: var(--profile-theme);
+    transform: rotate(15deg);
+}
+
 .menu-toggle {
     display: none;
 }
@@ -305,12 +362,13 @@ h6 {
 }
 
 .card-surface {
-    background: rgba(79, 178, 134, 0.05);
-    border: 1px solid rgba(79, 178, 134, 0.15);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
     border-radius: 1rem;
     padding: 2.5rem;
-    box-shadow: 0 1.25rem 3rem rgba(0, 0, 0, 0.06);
+    box-shadow: 0 1.25rem 3rem var(--shadow-color);
     backdrop-filter: blur(6px);
+    transition: background-color var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
 
 .section-header {
@@ -328,10 +386,11 @@ h6 {
 }
 
 .section-title {
-    color: var(--color-black);
+    color: var(--text-primary);
     font-size: 2rem;
     margin-top: 0.625rem;
     text-transform: uppercase;
+    transition: color var(--transition);
 }
 
 .profile-container {
@@ -418,6 +477,8 @@ h6 {
     text-transform: uppercase;
     margin: 0.625rem 0;
     font-weight: 700;
+    color: var(--text-primary);
+    transition: color var(--transition);
 }
 
 .title {
@@ -429,9 +490,10 @@ h6 {
 }
 
 .bio {
-    color: rgba(0, 0, 0, 0.7);
+    color: var(--text-secondary);
     font-size: 1rem;
     line-height: 1.7;
+    transition: color var(--transition);
 }
 
 .contact-info {
@@ -445,17 +507,32 @@ h6 {
 .contact-info li {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
     margin: 0;
     font-size: 0.9375rem;
-    color: rgba(0, 0, 0, 0.75);
+    color: var(--text-secondary);
+    transition: var(--transition);
+    padding: 0.25rem 0;
+}
+
+.contact-info li:hover {
+    color: var(--text-primary);
 }
 
 .contact-info i {
-    color: var(--profile-black);
+    color: var(--profile-theme);
     width: 1.5rem;
     display: inline-flex;
     justify-content: center;
+    font-size: 1.125rem;
+    transition: var(--transition);
+    opacity: 0.9;
+}
+
+.contact-info li:hover i {
+    color: var(--profile-theme);
+    opacity: 1;
+    transform: scale(1.15);
 }
 
 .contact-info a {
@@ -475,7 +552,7 @@ h6 {
 }
 
 .social-links a {
-    color: var(--color-black);
+    color: var(--text-primary);
     font-size: 1.25rem;
     transition: var(--transition);
 }
@@ -507,12 +584,14 @@ h6 {
 
 .contact-details h3 {
     font-size: 1.5rem;
-    color: var(--color-black);
+    color: var(--text-primary);
+    transition: color var(--transition);
 }
 
 .contact-details p {
-    color: rgba(0, 0, 0, 0.7);
+    color: var(--text-secondary);
     line-height: 1.7;
+    transition: color var(--transition);
 }
 
 .contact-actions {
@@ -532,7 +611,7 @@ h6 {
     padding: 0.75rem 1.5rem;
     border-radius: 999px;
     background: var(--profile-theme);
-    color: var(--color-black);
+    color: var(--profile-black);
     font-weight: 600;
     text-decoration: none;
     transition: transform var(--transition), box-shadow var(--transition);
@@ -550,7 +629,8 @@ h6 {
     overflow: hidden;
     box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.08);
     min-height: 20rem;
-    background: #f7f7f7;
+    background: var(--bg-primary);
+    transition: background-color var(--transition);
 }
 
 .contact-map iframe {
@@ -566,13 +646,14 @@ h6 {
     position: absolute;
     right: 1rem;
     bottom: 1rem;
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--bg-primary);
     padding: 0.5rem 1rem;
     border-radius: 999px;
     font-size: 0.875rem;
-    color: var(--color-black);
+    color: var(--text-primary);
     text-decoration: none;
     transition: var(--transition);
+    opacity: 0.9;
 }
 
 .map-link:hover {
@@ -588,9 +669,16 @@ h6 {
 }
 
 .about-content h3 {
-    color: var(--color-black);
+    color: var(--text-primary);
     font-size: 2.25rem;
     margin-bottom: 1.25rem;
+    transition: color var(--transition);
+}
+
+.about-content p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    transition: color var(--transition);
 }
 
 .about-card {
@@ -627,12 +715,14 @@ h6 {
     text-transform: uppercase;
     font-size: 1.5rem;
     letter-spacing: 0.08rem;
-    color: var(--color-black);
+    color: var(--text-primary);
+    transition: color var(--transition);
 }
 
 .timeline-header p {
     margin-top: 0.35rem;
-    color: rgba(0, 0, 0, 0.65);
+    color: var(--text-tertiary);
+    transition: color var(--transition);
 }
 
 .timeline-badge {
@@ -715,11 +805,21 @@ h6 {
 .timeline-content h3 {
     font-size: 1.5rem;
     margin-bottom: 0.625rem;
+    color: var(--text-primary);
+    transition: color var(--transition);
 }
 
 .timeline-content h4 {
-    color: var(--profile-black);
+    color: var(--text-primary);
     margin-bottom: 0.625rem;
+    transition: color var(--transition);
+}
+
+.timeline-content p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 0.625rem;
+    transition: color var(--transition);
 }
 
 .timeline-date {
@@ -754,8 +854,9 @@ h6 {
     gap: 0.75rem;
     font-size: 1.25rem;
     text-transform: uppercase;
-    color: var(--color-black);
+    color: var(--text-primary);
     letter-spacing: 0.08rem;
+    transition: color var(--transition);
 }
 
 .edu-icon {
@@ -833,13 +934,15 @@ h6 {
 
 .education-item h4 {
     font-size: 1.125rem;
-    color: var(--color-black);
+    color: var(--text-primary);
     margin-bottom: 0.35rem;
+    transition: color var(--transition);
 }
 
 .education-item p {
-    color: rgba(0, 0, 0, 0.7);
+    color: var(--text-secondary);
     margin-bottom: 0.35rem;
+    transition: color var(--transition);
 }
 
 .education-year {
@@ -896,8 +999,9 @@ h6 {
 }
 
 .skill-subtitle {
-    color: rgba(0, 0, 0, 0.65);
+    color: var(--text-tertiary);
     margin-top: 0.35rem;
+    transition: color var(--transition);
 }
 
 .skill-list {
@@ -919,12 +1023,14 @@ h6 {
 }
 
 .skill-name {
-    color: var(--color-black);
+    color: var(--text-primary);
     text-transform: uppercase;
+    transition: color var(--transition);
 }
 
 .skill-percent {
-    color: rgba(0, 0, 0, 0.65);
+    color: var(--text-tertiary);
+    transition: color var(--transition);
 }
 
 .skill-bar {
@@ -971,8 +1077,9 @@ h6 {
 }
 
 .interests-intro {
-    color: rgba(0, 0, 0, 0.65);
+    color: var(--text-tertiary);
     line-height: 1.7;
+    transition: color var(--transition);
 }
 
 .interests-list {
@@ -993,6 +1100,12 @@ h6 {
     border-radius: 0.625rem;
     transition: var(--transition);
     text-align: center;
+    color: var(--text-primary);
+}
+
+.interests-list li span {
+    color: var(--text-primary);
+    transition: color var(--transition);
 }
 
 .interests-list li i {
@@ -1042,6 +1155,10 @@ h6 {
     }
     .interests-card {
         padding: 1.75rem;
+    }
+
+    .theme-toggle {
+        font-size: 1.125rem;
     }
 
     .menu-toggle {
