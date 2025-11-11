@@ -110,18 +110,36 @@ function setupNavigation() {
         icon.classList.toggle('fa-times');
     });
 
-    // Handle navigation clicks
+    // Handle navigation clicks with smooth scroll
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            // Remove active class from all links
-            navLinks.forEach(l => l.classList.remove('active'));
-            // Add active class to clicked link
-            link.classList.add('active');
+            e.preventDefault();
             
-            // Close mobile menu if open
-            if (window.innerWidth <= 768) {
-                navMenu.classList.remove('active');
-                menuToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
+            // Get target section
+            const targetId = link.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                // Calculate offset for sticky navbar
+                const navHeight = document.querySelector('.topnav').offsetHeight;
+                const targetPosition = targetSection.offsetTop - navHeight;
+                
+                // Smooth scroll to target
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Remove active class from all links
+                navLinks.forEach(l => l.classList.remove('active'));
+                // Add active class to clicked link
+                link.classList.add('active');
+                
+                // Close mobile menu if open
+                if (window.innerWidth <= 768) {
+                    navMenu.classList.remove('active');
+                    menuToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
+                }
             }
         });
     });
@@ -146,23 +164,53 @@ function setupNavigation() {
         });
     });
 
+    // Observe all sections for scroll animations
+    const allSections = document.querySelectorAll('.section');
+    
     if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver(
+        const sectionObserver = new IntersectionObserver(
             (entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
+                        // Don't unobserve so sections can re-animate if needed
                     }
                 });
             },
             {
-                threshold: 0.15,
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
             }
         );
 
-        animatedSections.forEach(section => observer.observe(section));
+        allSections.forEach(section => {
+            sectionObserver.observe(section);
+            // Make first section visible immediately
+            if (section.id === 'Home') {
+                section.classList.add('is-visible');
+            }
+        });
+        
+        // Separate observer for data-animate sections
+        if (animatedSections.length > 0) {
+            const animateObserver = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                        }
+                    });
+                },
+                {
+                    threshold: 0.15,
+                }
+            );
+            
+            animatedSections.forEach(section => animateObserver.observe(section));
+        }
     } else {
+        // Fallback for browsers without IntersectionObserver
+        allSections.forEach(section => section.classList.add('is-visible'));
         animatedSections.forEach(section => section.classList.add('is-visible'));
     }
 }
